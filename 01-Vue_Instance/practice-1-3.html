@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>練習</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+  <style>
+    #app {
+      font-size: 1.25em;
+    }
+    input {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!--
+練習： 利用 VueJS 的 Filters 功能，建立
+1. uppercase filter: 將原有的字串/字母轉成大寫
+2. lowercase filter: 將原有的字串/字母轉成小寫
+3. currency filter:  判斷是否為數字，若是數字則在原有數字前加上 $ 字號，若不是數字則輸出原字串。 
+   例： 100 => $100  /  ABC => ABC
+-->
+
+  <div id="app">
+    msg: <input v-model="something" type="text">
+
+    <h1>toUpperCase: {{ something | toUpperCase }}</h1>
+    <h1>toLowerCase: {{ something | toLowerCase }}</h1>
+    <h1>currency: {{ something | currency }}</h1>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        something: ''
+      },
+      filters: {
+        toUpperCase: function(value) {
+          if(!value) return ''
+          value = value.toString();
+          return value.toUpperCase();
+        },
+        toLowerCase: function(value) {
+          if(!value) return ''
+          value = value.toString();
+          return value.toLowerCase();
+
+        },
+        currency: function(value) {
+          if(!value) return '';
+          if(value.typeof()==number)
+          {
+            value = value.toString();
+            return '$' + value;
+          }
+          else if (value.typeof()!=number) {
+            return value;
+          }
+
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

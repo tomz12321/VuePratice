@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Hello Vue</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+</head>
+<body>
+
+<!--
+練習：Hello Vue!
+==================
+建立一個 div 來呈現 Vue 的實體元件，撰寫第一個 Vue 實體元件。
+再建立一個 input 表單 v-model 結合
+-->
+<div id="demo">
+	<p> {{ message }} </p>
+	<input v-model="message">
+</div>
+
+var demo = new Vue({
+	el: '#demo',
+	data: {
+		message: 'Hello Vue.js!'
+	}
+})
+
+</body>
+</html>

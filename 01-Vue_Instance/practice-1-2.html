@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>練習</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+  <style>
+    #app {
+      font-size: 2em;
+    }
+    input {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!--
+練習：
+1. 分別為 firstName 與 lastName 兩個欄位加上  v-model 的輸入框，使 Vue 的實體可以與這兩個欄位做綁定
+2. 在 html 上輸出由 computed 處理後的 fullName
+-->
+
+  <div id="app">
+    <div>First Name: <input type="text" v-model="firstName"></div>
+    <div>Last Name: <input type="text" v-model="lastName"></div>
+    <div>Full Name: {{ fullName }}</div>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        firstName: "",
+        lastName: ""
+      },
+      computed: {
+        fullName: function () {
+          return `${this.firstName} ${this.lastName}`
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>

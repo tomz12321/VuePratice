@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>練習</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+  <style>
+    #app {
+      font-size: 1.25em;
+    }
+    input {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!--
+練習： 仿造先前範例，製作一個日幣匯率兌換器，讓使用者輸入日幣，計算出對應的新台幣金額。
+
+1. 透過 v-model + computed 屬性，即時計算
+2. 新增一按鈕，當使用者輸入數字後，按下按鈕再計算對應的數字
+-->
+
+  <div id="app">
+    <div>JPY: <input v-model="jpy" type="text"> </div>
+    <div>TWD: {{ twResult }}</div>
+    
+    <button @click="conv()">Click</button>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        jpy: 0
+      },
+      methods: {
+        conv: function(){
+          this.twResult = this.jpy*0.272795689;
+        }
+      }
+//       computed: {
+//         twResult : function () {
+//           return this.jpy*0.272795689}
+//       }
+    });
+  </script>
+
+</body>
+</html>

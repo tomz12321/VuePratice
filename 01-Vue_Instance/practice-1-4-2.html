@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>練習</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+  <style>
+    #app {
+      font-size: 1.5em;
+    }
+    input {
+      font-size: 1.25em;
+      margin-bottom: 10px;
+      width: 100px;
+    }
+  </style>
+</head>
+<body>
+
+<!--
+練習： 新增兩個 input 輸入框， 將 input 1 的數字與 input 2 的數字相加後輸出。  
+-->
+
+  <div id="app">
+    <input type="text" v-model.number="input1"> + <input type="text" v-model.number="input2"> = <span> {{ calResult() }} </span>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        input1:0,
+        input2:0
+      },      
+      methods: {
+        calResult: function(){
+          //return Number(this.input1) + Number(this.input2);
+          return this.input1 + this.input2;
+        }
+      }
+      // computed: {
+
+      // }
+    });
+  </script>
+
+</body>
+</html>

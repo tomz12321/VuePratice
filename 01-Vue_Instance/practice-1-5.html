@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>練習</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+  <style>
+    #app {
+      font-size: 1.25em;
+    }
+    input {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!--
+練習： 建立一個文字輸入欄位，當使用者沒有輸入文字，或是超過十個字時，出現警告訊息提醒。
+-->
+
+  <div id="app">
+    <div>Name: <input type="text" v-model="name"></div>
+    <!--<div v-if="name.length === 0 || name.length > 10">姓名欄位不可留白，且最多十個字</div>-->
+    <div v-if="cond">姓名欄位不可留白，且最多十個字</div>
+  </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        name: ""
+      },
+      computed:{
+        cond: function(){
+          return (name.length === 0 || name.length > 10);
+        }
+       //}//,
+      }
+      // computed:{
+      //   isResult : function(name){
+      //     if(name.length()>10)
+      //       return true;
+      //     else if(name.length()<=10)
+      //       return false;
+      //}
+    });
+  </script>
+
+</body>
+</html>

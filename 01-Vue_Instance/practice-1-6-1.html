@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>練習</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+  <style>
+    #app {
+      font-size: 1.25em;
+    }
+    button, input {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<!--
+練習： 參考前面 sales 範例，新增一個輸入框，比對 sales 的 name 欄位，並將其結果輸出。
+-->
+
+
+  <div id="app">
+    <div>Search: <input type="text" v-model="searchKey"></div>
+       
+    <ul>
+      <li v-for="(s, index) in sales" :key="s.name">
+        <h3>{{ index }} {{ s.name }}: </h3>
+        <div>age: {{ s.age }}</div>
+        <div>company: {{ s.company }}</div>
+        <div>email: {{ s.email }}</div>
+        <div>active: {{ s.isActive }}</div>
+      </li>
+    </ul>
+
+
+     
+   </div>
+
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      computed: {
+        var self = this; //key
+        filteredSales: function(){
+          return (this.sales.filter(function(sale){
+            //return return sale.filter(self => sale.name.indexOf(self.search) > -1);
+            return sale.name.indexOf(self.search) > -1;
+          }));
+        }
+      },
+      data: {
+        searchKey: '',
+        filter: false,
+        sales: [{
+          "age": 26,
+          "name": "Sarah Zamora",
+          "company": "ZINCA",
+          "email": "sarah_zamora@zinca.ca",
+          "isActive": false
+        }, {
+          "age": 37,
+          "name": "Cameron Wilder",
+          "company": "NIKUDA",
+          "email": "cameron_wilder@nikuda.biz",
+          "isActive": true
+        }, {
+          "age": 40,
+          "name": "Roach Hubbard",
+          "company": "EMOLTRA",
+          "email": "roach_hubbard@emoltra.me",
+          "isActive": true
+        }, {
+          "age": 38,
+          "name": "Juliet Sykes",
+          "company": "PROWASTE",
+          "email": "juliet_sykes@prowaste.org",
+          "isActive": true
+        }, {
+          "age": 21,
+          "name": "Jerri Jimenez",
+          "company": "ACCUPHARM",
+          "email": "jerri_jimenez@accupharm.tv",
+          "isActive": false
+        }]
+      } 
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Vue's Blog</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+
+    .row.content {
+      height: 1100px
+    }
+    /* Set gray background color and 100% height */
+
+    .label{ margin-right: 5px; }
+
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+    /* Set black background color, white text and some padding */
+
+    .articles > p{  margin-top: 25px; width: 90%; }
+
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    /* On small screens, set height to 'auto' for sidenav and grid */
+
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {
+        height: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div id="app">
+
+  <div class="container-fluid">
+
+    <div class="row content">
+      <div id="app">
+        <side-nav></side-nav>
+      </div>
+
+
+      <div id="app">
+        <main-block></main-block>
+      </div>
+
+      <div id="app">
+        <footer-block></footer-block>
+      </div>
+
+</div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.17/vue.js"></script>
+
+  <script>
+    Vue.component('side-nav',{
+      template:'<div class="component"></div>'
+      data: function(){
+        return {
+          msg: '<h4>Vue's Blog</h4>
+            <ul class="nav nav-pills nav-stacked">
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Friends</a></li>
+              <li><a href="#">Family</a></li>
+              <li><a href="#">Photos</a></li>
+            </ul>
+            <br>'
+        }
+      }
+    })
+    Vue.component('main-block',{
+      template:'<div class="component"></div>'
+      data: function(){
+        return {
+          msg1: '<h2>標題 01</h2>
+          <h5><span class="glyphicon glyphicon-time"></span> Post by Mary Dane, Sep 27, 2017. </h5>
+          <h5><span class="label label-primary">Food</span><span class="label label-primary">Ipsum</span></h5>
+          <p>從迷你吧的酒精飲品、朱古力、乾果，當然，我們兩個在一起的時候有多少快樂？喝醉了我誰也不服,我就扶牆!我就像一隻趴在玻璃上的蒼蠅，那麼你至少得吃一對兒鯨魚……我身邊的朋友們啊，樹不要皮，睡你的老公，愛情就像二個拉著橡皮筋的人，然後選中一張百元大鈔，就會有別的女人花你的錢，男孩窮著養，女孩富著養，我的衣服又瘦了！你們快點出名吧，可是已經晚了……請你以後不要在我面前說英文了，錢不是問題，工作，沒有錢，年老的時候，容易；生活，我們常常衝著鏡子做鬼臉，但又找不到出路．如果多吃魚可以補腦讓人變聰明的話，男人之美，不然不曉得奮鬥，早起的蟲蟲被鳥吃。錢不是問題，但又找不到出路．如果多吃魚可以補腦讓人變聰明的話，我希望有一天能用鼠標雙擊我的錢包，住你的房，然後選中一張百元大鈔，OK？以後拜師學藝找名嘴可能會比較快，尼克狂贏17分，有人說，媽媽和姊姊有被嚇到，全球剩不到千頭。男孩窮著養，年老的時候，退一步海闊天空，天哪，一旦累死了，OK？而是自己太貪，所有的資源在一點突破，暴躁在某種程度上講是因為有不安全感，慈善必須以商業的計劃執行，你的項目感覺是一個生意，小企業有大的胸懷，每次失敗好好接受教訓，品質不僅僅是團隊，但也不是不可能，什麼是團隊呢？有信心，報告曹委員，你看全臺灣50多座危險橋樑本來需要6年才能完成，瞭解到今天政府在這樣低的稅負率之下，如果我們跟他們一樣，那是你的事，總預算是我編的，我們都有，亦難認該處分已對於當地生態環境有立即重大污染情事，包括經濟部、經建會一定要預為因應，其實米酒稅率降低也是造福全民啊！感謝上師，感謝上師，…丙論辯似的說，那時代，福戶內的事，現時可說比較好些兒，一綵綵霜痕，手一插進衣袋，經驗過似的鄭重說，寒星似的一點點閃爍著。</p>'
+          msg2: '<h2>標題 02</h2>
+          <h5><span class="glyphicon glyphicon-time"></span> Post by John Doe, Oct 17, 2017. </h5>
+          <h5><span class="label label-primary">Lorem</span><span class="label label-primary">blog</span></h5>
+          <p>從來沒有，天崩塌的十日為葉化成蝶，突然翻滾絞痛著不平息，我都要給你一個讚殊途同歸？你是世界上最幸福的人，ㄟ那就結婚吧我沒有妳會死，如果是真的，前世的五百次回眸，在我消失在這個世界之前，我什麼都不要，什麼都別說了，照顧你生命中的每一天，你是世界上最幸福的人，我要照顧和負責妳一輩子。當CEO盡量少用我，店不在於多，永遠要把對手想得非常強大，永遠把別人對你的批評記在心裡，別人的表揚，蒙牛不是策劃出來的，在今天的商場上已經沒有秘密了，一個創業者最重要的，很多人失敗的原因不是錢太少，在今天的商場上已經沒有秘密了，什麼是團隊呢？然後再去找相關的技術解決方案，你要反省，不要貪多，年代的人還需要摔打，小公司的戰略簡單一點，改變文化很難很難，一個項目，是一整套東西。東京馬拉松，蘇打綠連兩天破蛋，禽流感驚爆，參訪中小企，EOS，遍地烽火，無論？請允許我，但我可以肯定地告訴你，但我可以肯定地告訴你，照顧你生命中的每一天，在我消失在這個世界之前，你是世界上最幸福的人，請允許我，如果是真的，ㄟ那就結婚吧我沒有妳會死，現在我不敢肯定，照顧你生命中的每一天，現在已經過了人生的四分之一，那麼餘下四分之三的時光請讓我來守護你好嗎？'
+          msg3: '<h2>標題 03</h2>
+          <h5><span class="glyphicon glyphicon-time"></span> Post by Kuro Hsu, Jan 27, 2017. </h5>
+          <h5><span class="label label-primary">vue</span></h5>
+          <p>Vue 測試</p>'
+        }
+      })
+    Vue.component('footer-block',{
+      template:'<div class="component"></div>'
+      data: function(){
+        return {
+          footmsg:'<p>Hello Footer! </p>'
+        }
+      })
+
+    var vm = new Vue({
+      el: '#app',
+    })
+  </script>
+
+</body>
+</html>

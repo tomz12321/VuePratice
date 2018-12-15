@@ -74,7 +74,7 @@
                   <a @click.prevent="add(c)" href="#" class="cart-btn plus">+</a> 
                   <a @click.prevent="remove(c)" href="#" class="cart-btn minus">-</a>
                 </div>
-                
+
               </div>
             </li>
           </ul>
@@ -117,7 +117,7 @@
       filteredItems(){
         var searchName = this.searchName;
 
-        return (this.searchName.trim() !== '')
+        return (this.searchName.trim() !== '') ? 
           this.items.filter(function(d) { return d.name.indexOf(searchName) > -1; }) :
           this.items;
       }
@@ -135,7 +135,7 @@
 
         for (let i = 0; i < this.cart.length; i++){
           if (this.cart[i].id === item._id) {
-            found.= true;
+            found = true;
             this.cart[i].qty++;
             break;
           }

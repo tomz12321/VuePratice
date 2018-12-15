@@ -21,5 +21,10 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     }
+    {
+      path: '/5xRuby',
+      name: '5xRuby',
+      component: () => import(/* webpackChunkName: "about" */ './views/5xRuby.vue')
+    },
   ]
 })

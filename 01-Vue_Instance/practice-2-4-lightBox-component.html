@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Slot</title>
+  <style>
+    #app {
+      margin: 1em;
+    }
+
+    input,
+    #show-modal {
+      font-size: 1.5em;
+    }
+
+    .modal-mask {
+      position: fixed;
+      z-index: 9998;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, .5);
+      display: table;
+      transition: opacity .3s ease;
+    }
+
+    .modal-wrapper {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .modal-container {
+      width: 300px;
+      margin: 0px auto;
+      padding: 20px 30px;
+      background-color: #fff;
+      border-radius: 2px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+      transition: all .3s ease;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
+    .modal-body {
+      color: #42b983;
+      margin: 20px 0;
+    }
+
+    .modal-enter {
+      opacity: 0;
+    }
+
+    .modal-leave-active {
+      opacity: 0;
+    }
+
+    .modal-enter .modal-container,
+    .modal-leave-active .modal-container {
+      -webkit-transform: scale(1.1);
+      transform: scale(1.1);
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+</head>
+
+<body>
+  <!-- app -->
+  <div id="app">
+
+    <ul>
+      <li><a @click.prevent="modalOpen('slot01')" href="#">slot01</a></li>
+      <li><a @click.prevent="modalOpen('slot02')" href="#">slot02</a></li>
+      <li><a @click.prevent="modalOpen('slot03')" href="#">slot03</a></li>
+    </ul>
+
+    <!-- 練習目標： 試著透過 slot 與 :is 來做到動態切換 component 的作用-->
+
+    
+
+    <modal v-if="showModal" @close="showModal = false">
+      <component :is="currentView"></component>
+    </modal>
+
+  </div>
+
+
+  <!-- 對話框的模板 -->
+  <script type="text/x-template" id="modal-template">
+
+    <transition name="modal">
+      <div class="modal-mask">
+        <div class="modal-wrapper" @click.self="$emit('close')">
+
+          <div class="modal-container">
+            <div class="modal-body">
+              <slot name="body">default body</slot>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </transition>
+
+  </script>
+
+
+  <script>
+
+    Vue.component('slot01', {
+      template: '<h1>Hello 1!</h1>'
+    });
+
+    Vue.component('slot02', {
+      template: '<h1>Hello 2!</h1>'
+    });
+
+    Vue.component('slot03', {
+      template: '<h1>Hello 3!</h1>'
+    });
+
+    Vue.component('modal', {
+      template: '#modal-template'
+    });
+
+    // start app
+    new Vue({
+      el: '#app',
+      methods:{
+        modalOpen: function(current){
+          this.showModal = true;
+          this.currentView = current;
+        }
+      },
+      data: {
+        showModal: false,
+        currentView: 'slot01'
+      }
+    })
+  </script>
+
+
+</body>
+
+</html>

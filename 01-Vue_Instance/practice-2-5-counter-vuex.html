@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vuex/2.3.1/vuex.js"></script>
+
+  <style>
+    .count {
+      color: red;
+    }
+    input, button{
+      font-size: 1.5em;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="app">
+    <div class="container">
+      <h2>count:<span class="count"> {{ count }}</span></h2>
+
+      <input type="text" v-model.number="num">
+
+      <button @click="increase"> + </button>
+      <button @click="decrease"> - </button>
+    </div>
+
+  </div>
+
+  <script>
+    const store = new Vuex.Store({
+      state: {
+        count: 0
+      },
+      actions: {
+        act_increase(context) {
+          // 透過 commit 操作 mutations
+          context.commit('mut_increase');
+        },
+        act_decrease(context) {
+          context.commit('mut_decrease');
+        },
+      },
+      mutations: {
+        mut_increase(state) {
+          state.count++;
+        },
+        mut_decrease(state) {
+          state.count--;
+        }
+      }
+    });
+
+    new Vue({
+      el: '#app',
+      store: store,
+      data: {
+        num: 0
+      },
+      methods: {
+        increase() {
+          this.$store.dispatch('act_increase');
+        },
+        decrease() {
+          this.$store.dispatch('act_decrease');
+        },
+      },
+      computed: {
+        count() {
+          return this.$store.state.count;
+        }
+      }
+    });
+  </script>
+
+</body>
+
+</html>
